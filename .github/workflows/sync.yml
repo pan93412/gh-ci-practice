@@ -29,4 +29,13 @@ jobs:
       
       # Hello, World!
       - name: Hello, World!
-        run: "echo 'Hi!'"
+        run: "echo $(date +'%I:%M:%S') > helloworld.txt"
+      
+      # Commit changes
+      - name: commit
+        run: |
+          git config user.name "SyncBot"
+          git config user.email "syncbot@sw.imych.one"
+          git add -A
+          git commit -m "Syncbot: sync announcement"
+          git push
